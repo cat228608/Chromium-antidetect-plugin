@@ -67,22 +67,31 @@
   };
 
   const spoofWebGL = (contextName) => {
-    const proto = window[contextName] && window[contextName].prototype;
-    if (!proto) return;
-    const originalGetParameter = proto.getParameter;
-    proto.getParameter = function(parameter) {
-      const paramSpoof = {
-        37445: fingerprint.gpu.vendor,
-        37446: fingerprint.gpu.renderer
-      };
-      if (parameter in paramSpoof) {
-        return paramSpoof[parameter];
-      }
-      return originalGetParameter.apply(this, arguments);
-    };
-  };
-  spoofWebGL('WebGLRenderingContext');
-  spoofWebGL('WebGL2RenderingContext');
+	  const proto = window[contextName] && window[contextName].prototype;
+	  if (!proto) return;
+
+	  const originalGetParameter = proto.getParameter;
+	  proto.getParameter = function(parameter) {
+		const paramSpoof = {
+		  37445: fingerprint.gpu.vendor,    // UNMASKED_VENDOR_WEBGL
+		  37446: fingerprint.gpu.renderer   // UNMASKED_RENDERER_WEBGL
+		};
+
+		if (parameter in paramSpoof) {
+		  return paramSpoof[parameter];
+		}
+
+		try {
+		  return originalGetParameter.call(this, parameter);
+		} catch (err) {
+		  // Если оригинальный WebGL падает с ошибкой, просто вернуть null
+		  return null;
+		}
+	  };
+	};
+
+	spoofWebGL('WebGLRenderingContext');
+	spoofWebGL('WebGL2RenderingContext');
 
   // Spoof Canvas
   const getImageData = CanvasRenderingContext2D.prototype.getImageData;
