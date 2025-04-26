@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Ultimate AntiDetect",
+  "version": "1.0",
+  "description": "Maximum browser spoofing: Canvas, WebGL, Timezone, Media Devices, Permissions, Bluetooth, Fingerprint Control",
+  "permissions": [
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "48": "icons/icon.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "inject.js"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
