@@ -1,16 +1,134 @@
-body {
-  font-family: Arial, sans-serif;
-  min-width: 220px;
-  text-align: center;
-  background: #202124;
-  color: white;
-  padding: 10px;
+:root {
+  --bg: #11161c;
+  --panel: rgba(255, 255, 255, 0.08);
+  --panel-border: rgba(255, 255, 255, 0.14);
+  --text: #f3f7fb;
+  --muted: #9fb2c7;
+  --accent: #88d498;
+  --accent-strong: #4fb286;
+  --shadow: rgba(0, 0, 0, 0.28);
 }
-button {
-  margin-top: 10px;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 360px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(79, 178, 134, 0.18), transparent 42%),
+    linear-gradient(160deg, #0b1015, #18212b 60%, #11161c);
+}
+
+.app {
+  padding: 16px;
+}
+
+.hero {
+  margin-bottom: 14px;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: var(--accent);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 10px 24px var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.master-toggle,
+.toggle,
+.field {
+  display: grid;
+  gap: 8px;
+  align-items: center;
+}
+
+.master-toggle,
+.toggle {
+  grid-template-columns: 1fr auto;
+}
+
+.master-toggle {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.toggle {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+}
+
+.toggle:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.field {
+  margin-bottom: 14px;
+}
+
+.field:last-of-type {
+  margin-bottom: 0;
+}
+
+.field output {
+  color: var(--accent);
+  font-size: 12px;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent-strong);
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent-strong);
+}
+
+input:disabled {
+  opacity: 0.45;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
 }

@@ -28,7 +28,8 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "inject.js"
+        "inject.js",
+        "utils/settings.js"
       ],
       "matches": ["<all_urls>"]
     }

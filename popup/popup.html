@@ -1,13 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Ultimate AntiDetect</title>
+  <title>Privacy Shield</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <h3>Fingerprint Spoof</h3>
-  <button id="toggle">Loading...</button>
+  <div class="app">
+    <div class="hero">
+      <p class="eyebrow">Privacy Shield</p>
+      <h1>Управление приватностью</h1>
+      <label class="master-toggle">
+        <span>Защита включена</span>
+        <input id="enabled" type="checkbox">
+      </label>
+    </div>
+
+    <section class="panel">
+      <h2>Интенсивность</h2>
+      <label class="field">
+        <span>Уровень приватности</span>
+        <output id="privacyLevelValue">70</output>
+        <input id="privacyLevel" type="range" min="0" max="100" step="5">
+      </label>
+      <label class="field">
+        <span>Шум canvas</span>
+        <output id="canvasNoiseValue">2</output>
+        <input id="canvasNoise" type="range" min="0" max="8" step="1">
+      </label>
+      <label class="field">
+        <span>Jitter таймеров</span>
+        <output id="timerJitterValue">12 ms</output>
+        <input id="timerJitter" type="range" min="0" max="40" step="1">
+      </label>
+    </section>
+
+    <section class="panel">
+      <h2>Модули защиты</h2>
+      <label class="toggle"><span>Navigator и hardware hints</span><input data-feature="navigatorMasking" type="checkbox"></label>
+      <label class="toggle"><span>Маскировка часового пояса</span><input data-feature="timezoneMasking" type="checkbox"></label>
+      <label class="toggle"><span>Защита canvas</span><input data-feature="canvasProtection" type="checkbox"></label>
+      <label class="toggle"><span>Защита WebGL</span><input data-feature="webglProtection" type="checkbox"></label>
+      <label class="toggle"><span>Ограничение WebRTC</span><input data-feature="webrtcProtection" type="checkbox"></label>
+      <label class="toggle"><span>Скрытие media devices</span><input data-feature="mediaDeviceProtection" type="checkbox"></label>
+      <label class="toggle"><span>Фильтр permissions</span><input data-feature="permissionProtection" type="checkbox"></label>
+      <label class="toggle"><span>Очистка plugins и mimeTypes</span><input data-feature="pluginSanitization" type="checkbox"></label>
+      <label class="toggle"><span>Отключение Bluetooth API</span><input data-feature="bluetoothDisable" type="checkbox"></label>
+    </section>
+
+    <p class="note">Изменения применяются после перезагрузки страницы.</p>
+  </div>
+
+  <script src="../utils/settings.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>
